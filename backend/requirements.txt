@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+SQLAlchemy
+pydantic
+email-validator
+argon2-cffi
+python-jose[cryptography]
+mysqlclient
+python-multipart
