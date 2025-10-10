@@ -1,0 +1,61 @@
+frontend/
+├─ public/
+│  └─ index.html
+├─ src/
+│  ├─ api/
+│  │  ├─ axiosInstance.js
+│  │  ├─ authService.js
+│  │  ├─ usersService.js
+│  │  ├─ companiesService.js
+│  │  ├─ permissionsService.js
+│  │  └─ ordersService.js
+│  ├─ assets/
+│  ├─ components/
+│  │  ├─ Buttons/
+│  │  ├─ Inputs/
+│  │  ├─ Forms/
+│  │  ├─ Tables/
+│  │  ├─ Cards/
+│  │  ├─ Modals/
+│  │  └─ Layout/
+│  │     ├─ Header.jsx
+│  │     ├─ Sidebar.jsx
+│  │     ├─ Footer.jsx
+│  │     └─ Layout.jsx
+│  ├─ context/
+│  │  └─ AuthContext.jsx
+│  ├─ hooks/
+│  │  ├─ useAuth.js
+│  │  └─ usePermissions.js
+│  ├─ pages/
+│  │  ├─ Auth/
+│  │  │  ├─ Login.jsx
+│  │  │  └─ Register.jsx
+│  │  ├─ Users/
+│  │  │  ├─ UsersList.jsx
+│  │  │  ├─ UserDetail.jsx
+│  │  │  └─ UserForm.jsx
+│  │  ├─ Companies/
+│  │  │  ├─ CompaniesList.jsx
+│  │  │  ├─ CompanyDetail.jsx
+│  │  │  └─ Subfolders.jsx
+│  │  ├─ Permissions/
+│  │  │  ├─ PermissionsList.jsx
+│  │  │  └─ PermissionForm.jsx
+│  │  ├─ Orders/
+│  │  │  ├─ OrdersList.jsx
+│  │  │  └─ OrderForm.jsx
+│  │  ├─ Planos/
+│  │  │  └─ PlanosViewer.jsx
+│  │  ├─ Certificados/
+│  │  │  └─ CertificadosViewer.jsx
+│  │  └─ Dashboard.jsx
+│  ├─ routes/
+│  │  └─ AppRouter.jsx
+│  ├─ utils/
+│  │  ├─ storage.js
+│  │  └─ fileUtils.js
+│  ├─ App.jsx
+│  └─ main.jsx
+├─ package.json
+└─ tailwind.config.js

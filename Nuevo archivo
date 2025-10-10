@@ -1,0 +1,50 @@
+🔹 Endpoints - Usuarios (users)
+| Método | Ruta                        | Parámetros                | Body                                        | Response                                                    |
+| ------ | --------------------------- | ------------------------- | ------------------------------------------- | ----------------------------------------------------------- |
+| POST   | `/users/`                   | -                         | `{ name, email, password, role?, status? }` | `{ id, name, email, role, status, created_at, last_login }` |
+| GET    | `/users/`                   | Query: `role?`, `status?` | -                                           | Array de usuarios                                           |
+| GET    | `/users/{user_id}`          | Path: `user_id`           | -                                           | `{ id, name, email, role, status, created_at, last_login }` |
+| PATCH  | `/users/{user_id}`          | Path: `user_id`           | `{ name?, email?, role?, status? }`         | `{ id, name, email, role, status, created_at, last_login }` |
+| DELETE | `/users/{user_id}`          | Path: `user_id`           | -                                           | 204 No Content                                              |
+| POST   | `/users/{user_id}/password` | Path: `user_id`           | `{ action, old_password?, new_password? }`  | `{}`                                                        |
+
+🔹 Endpoints - Autenticación (auth)
+| Método | Ruta          | Parámetros | Body                                                                  | Response                                      |
+| ------ | ------------- | ---------- | --------------------------------------------------------------------- | --------------------------------------------- |
+| POST   | `/auth/login` | -          | `username, password, grant_type?, scope?, client_id?, client_secret?` | `{ access_token, refresh_token, token_type }` |
+
+🔹 Endpoints - Empresas (companies)
+| Método | Ruta                                   | Parámetros           | Body | Response                                                   |
+| ------ | -------------------------------------- | -------------------- | ---- | ---------------------------------------------------------- |
+| GET    | `/companies/`                          | -                    | -    | Array de empresas `{ id, number, name, path, created_at }` |
+| GET    | `/companies/{company_id}`              | Path: `company_id`   | -    | `{ id, number, name, path, created_at }`                   |
+| GET    | `/companies/subfolders`                | -                    | -    | Array de subcarpetas `{ id, name, path, company_id }`      |
+| GET    | `/companies/subfolders/{subfolder_id}` | Path: `subfolder_id` | -    | `{ id, name, path, company_id }`                           |
+| POST   | `/companies/update-all`                | -                    | -    | Objeto con resultados `{ ... }`                            |
+
+🔹 Endpoints - Permisos (permissions)
+| Método | Ruta                                    | Parámetros            | Body                                                           | Response                                                                           |
+| ------ | --------------------------------------- | --------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| GET    | `/permissions/`                         | -                     | -                                                              | Array de permisos `{ id, user_id, company_id, subfolder_id, can_read, can_write }` |
+| POST   | `/permissions/`                         | -                     | `{ user_id, company_id, subfolder_id, can_read?, can_write? }` | `{ id, user_id, company_id, subfolder_id, can_read, can_write }`                   |
+| GET    | `/permissions/user/{user_id}`           | Path: `user_id`       | -                                                              | Array de permisos de un usuario                                                    |
+| GET    | `/permissions/subfolder/{subfolder_id}` | Path: `subfolder_id`  | -                                                              | Array de permisos de una subcarpeta                                                |
+| PATCH  | `/permissions/{permission_id}`          | Path: `permission_id` | `{ can_read, can_write }`                                      | `{ id, user_id, company_id, subfolder_id, can_read, can_write }`                   |
+| DELETE | `/permissions/{permission_id}`          | Path: `permission_id` | -                                                              | 204 No Content                                                                     |
+
+🔹 Endpoints - Pedidos (orders)
+| Método | Ruta                           | Parámetros         | Body                                | Response                                                             |
+| ------ | ------------------------------ | ------------------ | ----------------------------------- | -------------------------------------------------------------------- |
+| GET    | `/orders/`                     | -                  | -                                   | Array de pedidos `{ id, user_id, company_id, details?, created_at }` |
+| POST   | `/orders/`                     | -                  | `{ user_id, company_id, details? }` | `{ id, user_id, company_id, details?, created_at }`                  |
+| GET    | `/orders/user/{user_id}`       | Path: `user_id`    | -                                   | Array de pedidos por usuario                                         |
+| GET    | `/orders/company/{company_id}` | Path: `company_id` | -                                   | Array de pedidos por empresa                                         |
+| GET    | `/orders/{order_id}`           | Path: `order_id`   | -                                   | `{ id, user_id, company_id, details?, created_at }`                  |
+| PATCH  | `/orders/{order_id}`           | Path: `order_id`   | `{ details? }`                      | `{ id, user_id, company_id, details?, created_at }`                  |
+| DELETE | `/orders/{order_id}`           | Path: `order_id`   | -                                   | 204 No Content                                                       |
+
+
+🔹 Notas importantes
+
+Todos los endpoints que requieren seguridad (OAuth2PasswordBearer) deben recibir el header:
+Authorization: Bearer <access_token>

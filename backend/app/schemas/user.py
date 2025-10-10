@@ -30,3 +30,7 @@ class PasswordAction(BaseModel):
     action: str  # "reset" o "change"
     old_password: Optional[str] = None
     new_password: Optional[str] = None
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
